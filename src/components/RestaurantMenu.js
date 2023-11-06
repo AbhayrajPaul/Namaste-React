@@ -21,7 +21,7 @@ const RestaurantMenu = () => {
       <h3>{resInfo?.costForTwoMessage}</h3>
       <h2>Menu</h2>
       <div>
-        {resItems.map((item, index) => (
+        {resItems.map((item) => (
           <div key={item?.card?.info?.id}>
             <h1>{item?.card?.card?.title}</h1>
             {item?.card?.card?.itemCards?.map((e) => {

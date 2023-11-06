@@ -18,3 +18,6 @@ import ReactDOM from "react-dom/client"; -->
 # Note
 
 <!-- // JSX => React.createElement => ReactElement(Js object) => HtmlElement (render) -->
+
+## css
+font-family: Arial, Helvetica, sans-serif;

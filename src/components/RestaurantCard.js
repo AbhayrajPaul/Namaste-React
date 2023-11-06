@@ -9,9 +9,13 @@ const RestaurantCard = ({
   deliveryTime,
 }) => {
   return (
-    <div className="restaurant-card" style={{ backgroundColor: "#f0f0f0" }}>
-      <img className="res-logo" src={CDN_URL + cloudinaryImageId} alt="logo" />
-      <h3>{name}</h3>
+    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-400 lg:bg-green-50 sm:bg-yellow-50">
+      <img
+        className="rounded-lg"
+        src={CDN_URL + cloudinaryImageId}
+        alt="logo"
+      />
+      <h3 className="font-bold py-4 text-lg">{name}</h3>
       <h4>{cuisines.join(",")}</h4>
       <h4>{avgRating} Stars</h4>
       <h4> Rs {costForTwo}/-</h4>
