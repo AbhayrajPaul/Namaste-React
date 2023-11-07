@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromo } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]); // copy of all the restaurant
   const [filteredRestaurant, setFilteredRestaurant] = useState([]); // filtered data
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromo = withPromo(RestaurantCard);
 
   console.log(restaurantList);
 
@@ -91,16 +93,27 @@ const Body = () => {
             key={restaurant?.info?.id}
             to={"/restaurant/" + restaurant?.info?.id}
           >
-            {" "}
-            <RestaurantCard
-              id={restaurant?.info?.id}
-              cloudinaryImageId={restaurant?.info?.cloudinaryImageId}
-              name={restaurant?.info?.name}
-              avgRating={restaurant?.info?.avgRating}
-              cuisines={restaurant?.info?.cuisines}
-              costForTwo={restaurant?.info?.costForTwo}
-              deliveryTime={restaurant?.info?.sla.deliveryTime}
-            />
+            {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+              <RestaurantCardPromo
+                id={restaurant?.info?.id}
+                cloudinaryImageId={restaurant?.info?.cloudinaryImageId}
+                name={restaurant?.info?.name}
+                avgRating={restaurant?.info?.avgRating}
+                cuisines={restaurant?.info?.cuisines}
+                costForTwo={restaurant?.info?.costForTwo}
+                deliveryTime={restaurant?.info?.sla.deliveryTime}
+              />
+            ) : (
+              <RestaurantCard
+                id={restaurant?.info?.id}
+                cloudinaryImageId={restaurant?.info?.cloudinaryImageId}
+                name={restaurant?.info?.name}
+                avgRating={restaurant?.info?.avgRating}
+                cuisines={restaurant?.info?.cuisines}
+                costForTwo={restaurant?.info?.costForTwo}
+                deliveryTime={restaurant?.info?.sla.deliveryTime}
+              />
+            )}
           </Link>
         ))}
       </div>
